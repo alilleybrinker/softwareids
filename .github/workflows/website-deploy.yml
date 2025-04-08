@@ -1,0 +1,67 @@
+name: Website Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  website-build:
+    runs-on: ubuntu-latest
+
+    env:
+      TAILWIND_VERSION: 4.1.3
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Install the latest version of Zola.
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.20.0
+
+      - name: Install Tailwind CLI
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSLO https://github.com/tailwindlabs/tailwindcss/releases/download/v${TAILWIND_VERSION}/tailwindcss-linux-x64
+          chmod +x tailwindcss-linux-x64
+          mv tailwindcss-linux-x64 tailwindcss
+          mkdir -p "${HOME}/.local/bin"
+          mv tailwindcss "${HOME}/.local/bin/tailwindcss"
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: Setup GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Website
+        run: |
+          cd site
+          zola build
+          tailwindcss -i styles/main.css -o public/main.css
+
+      - name: Upload Build Output
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site/public
+
+  website-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: website-build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
