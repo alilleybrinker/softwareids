@@ -1,9 +1,10 @@
 import { elem } from "./web.mjs";
 
 export async function main() {
-  let host = window.location.origin;
+  const host = window.location.origin;
+  const path = window.location.pathname;
 
-  const data = await fetchJson(`${host}/data/software_ids.json`);
+  const data = await fetchJson(`${host}${path}/data/software_ids.json`);
   if (data === null) return;
 
   let elem = document.getElementById("software-id-list");
