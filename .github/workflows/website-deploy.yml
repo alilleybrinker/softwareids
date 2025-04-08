@@ -46,7 +46,6 @@ jobs:
 
       - name: Build Website
         run: |
-          cd site
           zola build
           tailwindcss -i styles/main.css -o public/main.css
 
