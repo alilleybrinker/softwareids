@@ -1,0 +1,10 @@
+base_url = "https://alilleybrinker.github.io/softwareids"
+compile_sass = false
+build_search_index = false
+
+[markdown]
+highlight_code = false
+
+[extra]
+site_title = "Software IDs"
+site_description = "A list of common software identification formats"

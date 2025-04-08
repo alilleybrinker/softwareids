@@ -1,0 +1,57 @@
+{
+  "formats": [
+    {
+      "name": "Common Platform Enumeration",
+      "aliases": ["CPE"],
+      "derivation": "defined",
+      "definition_url": "https://nvd.nist.gov/products/cpe",
+      "description": "CPEs are a defined identifier issued by software producers or third-parties based on entries in the central CPE dictionary, maintained by NIST. They're commonly used in vulnerability management systems like NIST's National Vulnerability Database (NVD)."
+    },
+    {
+      "name": "Package URL",
+      "aliases": ["PURL"],
+      "derivation": "defined",
+      "definition_url": "https://github.com/package-url/purl-spec",
+      "description": "Package URLs represent software distributed through package hosts like NPM, RubyGems, and PyPI."
+    },
+    {
+      "name": "OmniBOR Artifact ID",
+      "aliases": ["OmniBOR"],
+      "derivation": "inherent",
+      "definition_url": "https://github.com/omnibor/spec",
+      "description": "OmniBOR Artifact IDs are inherent identifiers derived from the content of the artifact being identified."
+    },
+    {
+      "name": "SoftWare Identification Tagging",
+      "aliases": ["SWID", "SWID Tag"],
+      "derivation": "defined",
+      "definition_url": "https://csrc.nist.gov/projects/software-identification-swid",
+      "description": "SWID Tags are defined identifiers assigned by the originator of the ID, either a software producer or a third-party attesting to it."
+    },
+    {
+      "name": "Software Heritage Persistent Identifier",
+      "aliases": [
+        "Software Heritage Identifier",
+        "SWHID",
+        "Software Hash Identifier"
+      ],
+      "derivation": "inherent",
+      "definition_url": "https://docs.softwareheritage.org/devel/swh-model/persistent-identifiers.html",
+      "description": "SWHIDs are an inherent identifier used for identifying five kinds of objects: file contents, directories, revisions in a Version Control Systems' history, specific software releases, or snapshots of a point in a software project's history. They're intended for use in source code preservation and history tracking."
+    },
+    {
+      "name": "Nix Store Path",
+      "aliases": [],
+      "derivation": "inherent",
+      "definition_url": "https://nix.dev/manual/nix/2.25/protocols/store-path",
+      "description": "Nix Store Paths are an inherent identifier based on the build inputs used to produce the artifacts being identified. They're used to identify packages in the Nix ecosystem."
+    },
+    {
+      "name": "Open Source Vulnerability Package Object",
+      "aliases": ["OSV Package Object"],
+      "derivation": "defined",
+      "definition_url": "https://ossf.github.io/osv-schema/#affectedpackage-field",
+      "description": "OSV Package Objects are how the OSV database identifies packages for the purpose of vulnerability reporting and tracking. They're either a package name and ecosystem pair or a Package URL."
+    }
+  ]
+}

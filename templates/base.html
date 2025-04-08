@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US" class="">
+    <head>
+        <title>{{ config.extra.site_title }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {#
+        <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="any">
+        <link rel="icon" href="{{ get_url(path='icon.svg') }}" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="{{ get_url(path='apple-touch-icon.png') }}">
+        <link rel="manifest" href="{{ get_url(path='manifest.webmanifest') }}">
+        #}
+
+        <meta name="description" content="{{ config.extra.site_description }}" />
+
+        <meta property="og:title" content="{{ config.extra.site_title }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ config.base_url }}" />
+        <meta property="og:description" content="{{ config.extra.site_description }}" />
+
+        <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+        <link href="{{ get_url(path='main.css') }}" rel="stylesheet">
+    </head>
+    <body class="">
+        <div class="px-4 bg-slate-100 text-slate-800">
+            <div class="mx-auto py-12 md:py-32 max-w-6xl">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <script type="importmap">
+          {
+            "imports": {
+              "main": "./scripts/main.mjs"
+            }
+          }
+        </script>
+        <script type="module" src="{{ get_url(path='scripts/main.mjs') }}"></script>
+        <script type="module">
+          import { main } from "main";
+          main().catch((error) => console.error(error));
+        </script>
+    </body>
+</html>
