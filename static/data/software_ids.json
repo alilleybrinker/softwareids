@@ -52,6 +52,20 @@
       "derivation": "defined",
       "definition_url": "https://ossf.github.io/osv-schema/#affectedpackage-field",
       "description": "OSV Package Objects are how the OSV database identifies packages for the purpose of vulnerability reporting and tracking. They're either a package name and ecosystem pair or a Package URL."
+    },
+    {
+      "name": "Nix Flake Reference",
+      "aliases": ["Nix Flakeref", "flakeref"],
+      "derivation": "defined",
+      "definition_url": "https://nix.dev/manual/nix/2.24/command-ref/new-cli/nix3-flake.html#flake-references",
+      "description": "URL used for identifying Flakes in the Nix ecosystem."
+    },
+    {
+      "name": "Version Control System URL",
+      "aliases": ["VCS URL"],
+      "derivation": "defined",
+      "definition_url": "https://pip.pypa.io/en/stable/topics/vcs-support/",
+      "description": "URL used to specify materials within a Version Control System repository."
     }
   ]
 }
