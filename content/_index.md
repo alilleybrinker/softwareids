@@ -12,6 +12,11 @@ singular common standard. These schemes serve different and often
 complementary purposes, and can be used together to identify software
 at varying levels of granularity.
 
+Each entry notes whether its identifiers are _defined_ by a producer or
+third-party, or _inherent_ to the thing being identified, and what kind of
+thing it identifies — a file, a package, an installed application, a product,
+and so on.
+
 This is intended only as a catalog, not a recommendation for a specific scheme.
 
 {{ button(text="Contribute on GitHub", url="https://github.com/alilleybrinker/softwareids") }}

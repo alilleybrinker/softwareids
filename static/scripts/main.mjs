@@ -35,10 +35,20 @@ function buildSoftwareIdEntry(spec) {
           `${spec.name} ↗`,
         ]),
       ]),
-      elem("ul", {}, c("list-none ps-0 mb-4 text-sm text-slate-600"), [
-        elem("li", {}, {}, [`Derivation: ${derivationName(spec.derivation)}`]),
-        elem("li", {}, {}, [aliasesString(spec.aliases)]),
-      ]),
+      elem(
+        "ul",
+        {},
+        c("list-none ps-0 mb-4 text-sm text-slate-600"),
+        [
+          elem("li", {}, {}, [
+            `Derivation: ${derivationName(spec.derivation)}`,
+          ]),
+          granularityString(spec.granularity) === null
+            ? null
+            : elem("li", {}, {}, [granularityString(spec.granularity)]),
+          elem("li", {}, {}, [aliasesString(spec.aliases)]),
+        ].filter((item) => item !== null),
+      ),
       elem("p", {}, {}, [`${spec.description}`]),
     ],
   );
@@ -56,6 +66,40 @@ function aliasesString(aliases) {
       return `Alias: ${aliases[0]}`;
     default:
       return `Aliases: ${aliases.join(", ")}`;
+  }
+}
+
+function granularityString(granularity) {
+  if (!Array.isArray(granularity) || granularity.length === 0) return null;
+  return `Identifies: ${granularity.map(granularityName).join(", ")}`;
+}
+
+function granularityName(granularity) {
+  switch (granularity) {
+    case "file":
+      return "File";
+    case "directory":
+      return "Directory";
+    case "revision":
+      return "Revision";
+    case "snapshot":
+      return "Snapshot";
+    case "release":
+      return "Release";
+    case "build":
+      return "Build";
+    case "package":
+      return "Package";
+    case "image":
+      return "Image";
+    case "product":
+      return "Product";
+    case "install":
+      return "Installation";
+    case "bom":
+      return "BOM";
+    default:
+      return "Unknown";
   }
 }
 
