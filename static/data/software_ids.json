@@ -66,6 +66,146 @@
       "derivation": "defined",
       "definition_url": "https://pip.pypa.io/en/stable/topics/vcs-support/",
       "description": "URL used to specify materials within a Version Control System repository."
+    },
+    {
+      "name": "OCI Image Digest",
+      "aliases": ["Image Digest", "Content Digest"],
+      "derivation": "inherent",
+      "definition_url": "https://github.com/opencontainers/image-spec/blob/main/descriptor.md",
+      "description": "Image Digests are an inherent identifier computed as a cryptographic hash of the bytes of an OCI manifest, configuration, or layer blob. Referring to an image by digest rather than by tag is how container deployments pin to exact content."
+    },
+    {
+      "name": "OCI Image Reference",
+      "aliases": ["Image Reference", "Image Name and Tag"],
+      "derivation": "defined",
+      "definition_url": "https://github.com/opencontainers/distribution-spec/blob/main/spec.md",
+      "description": "Image References are a defined identifier combining a registry host, a repository name, and a tag. They're the usual way container images are named, and unlike digests they're mutable, so the same reference may resolve to different content over time."
+    },
+    {
+      "name": "Git Object ID",
+      "aliases": ["Git OID", "Git Hash", "Commit SHA"],
+      "derivation": "inherent",
+      "definition_url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+      "description": "Git Object IDs are an inherent identifier computed as a hash of an object's type, length, and contents, covering file contents, directory trees, commits, and tags. Pinned commit IDs are widely used to identify the exact source of a dependency."
+    },
+    {
+      "name": "GNU Build ID",
+      "aliases": ["Build ID", "ELF Build ID"],
+      "derivation": "inherent",
+      "definition_url": "https://sourceware.org/elfutils/DebugInfo",
+      "description": "Build IDs are an inherent identifier embedded in a compiled binary by the linker as an ELF note, derived from the normative parts of the output file. They're used to match a stripped binary with its separate debug information, including by debuginfod and crash reporting tools."
+    },
+    {
+      "name": "SPDX Package Verification Code",
+      "aliases": ["Package Verification Code"],
+      "derivation": "inherent",
+      "definition_url": "https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/PackageVerificationCode/",
+      "description": "Package Verification Codes are an inherent identifier derived from the sorted hashes of the files in a package, excluding any SPDX document shipped inside it. They let the recipient of an SPDX document independently check that the package's files are the ones that were analyzed."
+    },
+    {
+      "name": "Go Module Hash",
+      "aliases": ["dirhash", "h1 hash", "go.sum hash"],
+      "derivation": "inherent",
+      "definition_url": "https://pkg.go.dev/golang.org/x/mod/sumdb/dirhash",
+      "description": "Go Module Hashes are an inherent identifier derived from the names and content hashes of the files in a module. They're recorded in go.sum files and in the Go checksum database, a public transparency log, so a module version's contents can be verified when it's downloaded."
+    },
+    {
+      "name": "Content Identifier",
+      "aliases": ["CID", "IPFS CID"],
+      "derivation": "inherent",
+      "definition_url": "https://specs.ipfs.tech/cid/",
+      "description": "Content Identifiers are a self-describing inherent identifier that carries the hash algorithm, content type, and string encoding alongside the hash itself. They're used for content-addressed storage and distribution in IPFS and IPLD."
+    },
+    {
+      "name": "Subresource Integrity Metadata",
+      "aliases": ["SRI", "Integrity Metadata"],
+      "derivation": "inherent",
+      "definition_url": "https://w3c.github.io/webappsec-subresource-integrity/",
+      "description": "Subresource Integrity metadata is an inherent identifier, a cryptographic hash carried in an HTML integrity attribute, which a browser checks against a fetched script or stylesheet before using it. It identifies exactly the resource a page author expected to load."
+    },
+    {
+      "name": "Guix Store Item",
+      "aliases": ["Guix Store Path"],
+      "derivation": "inherent",
+      "definition_url": "https://guix.gnu.org/manual/1.5.0/en/html_node/The-Store.html",
+      "description": "Guix Store Items are an inherent identifier based on the derivation used to produce the artifacts being identified, or on a known content hash in the case of fixed-output derivations. They're the Guix analogue of Nix Store Paths."
+    },
+    {
+      "name": "Trend Micro Locality Sensitive Hash",
+      "aliases": ["TLSH"],
+      "derivation": "inherent",
+      "definition_url": "https://github.com/trendmicro/tlsh",
+      "description": "TLSH is an inherent fuzzy identifier: similar inputs produce similar hash values, so two artifacts can be compared for approximate similarity rather than exact equality. Along with schemes like ssdeep, fuzzy hashes are used mainly in malware analysis and threat intelligence, where exact-match identifiers are easily evaded."
+    },
+    {
+      "name": "Concise Software Identification Tag",
+      "aliases": ["CoSWID", "Concise SWID"],
+      "derivation": "defined",
+      "definition_url": "https://www.rfc-editor.org/info/rfc9393/",
+      "description": "CoSWID Tags are a defined identifier carrying information similar to a SWID Tag in a compact CBOR encoding, specified by the IETF in RFC 9393. They're intended for constrained devices and firmware, where XML SWID Tags are too large to carry."
+    },
+    {
+      "name": "CycloneDX BOM-Link",
+      "aliases": ["BOM-Link"],
+      "derivation": "defined",
+      "definition_url": "https://cyclonedx.org/capabilities/bomlink/",
+      "description": "BOM-Links are a defined identifier in an IANA-registered URN namespace that names a specific CycloneDX BOM by serial number and version, optionally pointing at a single component, service, or vulnerability within it. They let BOMs reference each other instead of being inlined."
+    },
+    {
+      "name": "Apple Bundle Identifier",
+      "aliases": ["Bundle ID", "CFBundleIdentifier"],
+      "derivation": "defined",
+      "definition_url": "https://developer.apple.com/documentation/bundleresources/information-property-list/cfbundleidentifier",
+      "description": "Bundle IDs are a defined identifier in reverse-DNS form, chosen by the developer, that identifies an app, framework, or other bundle on Apple platforms. They're used throughout macOS and iOS for code signing, entitlements, and preferences, and identify software as installed rather than as distributed."
+    },
+    {
+      "name": "Android Application ID",
+      "aliases": ["applicationId", "Android Package Name"],
+      "derivation": "defined",
+      "definition_url": "https://developer.android.com/build/configure-app-module",
+      "description": "Application IDs are a defined identifier in reverse-DNS form, declared in an app's build configuration, that identifies an Android app on a device and in app stores. It can't change after publication without stores treating the upload as an entirely different app."
+    },
+    {
+      "name": "Flatpak Application ID",
+      "aliases": ["Flatpak App ID"],
+      "derivation": "defined",
+      "definition_url": "https://docs.flatpak.org/en/latest/conventions.html",
+      "description": "Flatpak Application IDs are a defined identifier in reverse-DNS form following D-Bus bus name conventions, shared with the Desktop Entry and AppStream specifications. They identify applications distributed as Flatpaks."
+    },
+    {
+      "name": "Windows Installer Product Code",
+      "aliases": ["MSI ProductCode", "ProductCode", "UpgradeCode"],
+      "derivation": "defined",
+      "definition_url": "https://learn.microsoft.com/en-us/windows/win32/msi/product-codes",
+      "description": "Product Codes are a defined identifier, an opaque GUID assigned by the producer, that identifies a particular release of a Windows Installer product; a companion Upgrade Code identifies the related family of releases. They're a primary key for Windows software inventory tooling."
+    },
+    {
+      "name": "Maven Coordinates",
+      "aliases": ["GAV", "Maven GAV"],
+      "derivation": "defined",
+      "definition_url": "https://maven.apache.org/repositories/artifacts.html",
+      "description": "Maven Coordinates are a defined identifier combining a group ID, artifact ID, and version, usually written groupId:artifactId:version, with extended forms adding packaging and classifier. They identify artifacts in Maven repositories across the JVM ecosystem."
+    },
+    {
+      "name": "Go Module Path",
+      "aliases": ["Module Path"],
+      "derivation": "defined",
+      "definition_url": "https://go.dev/ref/mod#module-path",
+      "description": "Module Paths are a defined identifier, declared in a module's go.mod file, that both names a module and indicates where it can be fetched from. Combined with a version, including the major version suffix required from v2 onward, a module path identifies an immutable snapshot of a module."
+    },
+    {
+      "name": "Digital Object Identifier",
+      "aliases": ["DOI"],
+      "derivation": "defined",
+      "definition_url": "https://www.doi.org/the-identifier/what-is-a-doi/",
+      "description": "DOIs are a defined identifier assigned by a registration agency and resolvable through the Handle System, widely used for citable research outputs. Applied to software they identify a specific deposited release, and are often paired with SWHIDs in software citation and archival."
+    },
+    {
+      "name": "Wikidata Entity ID",
+      "aliases": ["QID", "Q Identifier"],
+      "derivation": "defined",
+      "definition_url": "https://www.wikidata.org/wiki/Wikidata:Identifiers",
+      "description": "Wikidata Entity IDs are a defined identifier for an entity in Wikidata's knowledge graph, usable as a resolvable URI. For software they identify a product or project as a concept, above the level of any particular release, which makes them useful for joining catalogs that otherwise share no identifier."
     }
   ]
 }
